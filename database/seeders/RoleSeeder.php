@@ -73,7 +73,5 @@ class RoleSeeder extends Seeder
         } else {
             $this->command->info('🔹 El usuario ya tenía el rol "Editor".');
         }
-
-        
     }
 }

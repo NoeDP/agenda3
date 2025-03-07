@@ -16,6 +16,10 @@
                     <input type="text" class="form-control" id="create_title" name="create_title" required>
                     <span id="titleError" class="text-danger"></span>
 
+                    <label for="create_tipoEvento">Tipo de evento</label>
+                    <input type="text" class="form-control" id="create_tipoEvento" name="create_tipoEvento" required>
+
+
                     <label>fecha de inicio:</label>
                     <input type="date" id="create_fechaInicio" name="inicio" class="form-control" required>
 
@@ -75,9 +79,6 @@
 
                     <label for="create_notasCta">Notas CTA</label>
                     <input type="text" class="form-control" id="create_notasCta" name="create_notasCta">
-
-                    <label for="create_tipoEvento">Tipo de evento</label>
-                    <input type="text" class="form-control" id="create_tipoEvento" name="create_tipoEvento" required>
 
                     @auth
                         <p><strong>RESGISTRADOR:</strong> <span id="evento_registrador">{{ Auth::user()->name }}</span></p>

@@ -48,8 +48,8 @@ class CalendarController extends Controller
                     'end'         => $horario->end,
 
                     'tipo_evento' => $evento->tipo_evento,
-                    'notas_generales' => $evento->notas_generales,
-                    'notas_cta' => $evento->notas_cta,
+                    'notas_generales' => $evento->notas_generales ?? "sin notas",
+                    'notas_cta' => $evento->notas_cta ?? "Sin notas",
 
                     'organizador_id' => $evento->organizador->id,
                     'organizador_nombre' => $evento->organizador->nombre,
@@ -118,7 +118,7 @@ class CalendarController extends Controller
                 ->exists();
 
             if ($conflicto) {
-                return response()->json(['error' => 'El foro ya está ocupado en el horario seleccionado.'], 400);
+                return redirect()->back()->with('error', 'El foro ya está ocupado en el horario seleccionado.');
             }
 
             // Crear el evento
@@ -166,9 +166,9 @@ class CalendarController extends Controller
         'foros_id' => 'required|exists:foros,id',
         'organizadors_id' => 'required|exists:organizadors,id',
         'start_date' => 'required|date',
-        'start_hour' => 'required|date_format:H:i',
+        'start_hour' => 'required',
         'end_date' => 'required|date|after_or_equal:start_date',
-        'end_hour' => 'required|date_format:H:i|after:start_hour',
+        'end_hour' => 'required|after:start_hour',
     ]);
 
     if ($validator->fails()) {

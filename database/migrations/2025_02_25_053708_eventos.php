@@ -19,8 +19,8 @@ return new class extends Migration
             $table->foreignId('foros_id')->constrained('foros');
             $table->string('title', 255);
             $table->string('tipo_evento', 35);
-            $table->text('notas_generales');
-            $table->text('notas_cta');
+            $table->text('notas_generales')->nullable()->default(null);
+            $table->text('notas_cta')->nullable()->default(null);
             $table->softDeletes();
 
             $table->timestamps();
