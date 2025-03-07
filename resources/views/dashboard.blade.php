@@ -95,6 +95,14 @@
                             </div>
                             <ul id="eventos-lista" class="text-gray-500 dark:text-gray-400">
                                 @foreach ($eventos as $evento)
+                                <?php
+                                    $horarios = $evento->horario->toArray(); // Convertir a array
+                                    $inicio = reset($horarios); // Primer elemento
+                                    $fin = end($horarios);  
+                    
+                                        $evento->inicio = $inicio['start_date'];
+                                        $evento->fin = $fin['end_date'];
+                                    ?>
                                     @foreach ($evento->horario as $horario)
                                         <li class="cardEvento block mb-2  p-6 bg-white border border-gray-200 rounded-lg shadow-sm hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
                                             data-title="{{ strtolower($evento->title) }}"
@@ -168,8 +176,8 @@
                                                         `{{ addslashes($evento->foro->id) }}`,
                                                         `{{ addslashes($evento->foro->sede) }}`,
                                                         `{{ addslashes($evento->title) }}`,
-                                                        `{{ addslashes($horario->start_date) }}`,
-                                                        `{{ addslashes($horario->end_date) }}`,
+                                                        `{{ addslashes($evento->title) }}`,
+                                                        `{{ addslashes($evento->inicio) }}`,
                                                         `{{ addslashes($horario->start_hour) }}`,
                                                         `{{ addslashes($horario->end_hour) }}`,
                                                         
