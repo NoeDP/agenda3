@@ -176,8 +176,8 @@
                                                         `{{ addslashes($evento->foro->id) }}`,
                                                         `{{ addslashes($evento->foro->sede) }}`,
                                                         `{{ addslashes($evento->title) }}`,
-                                                        `{{ addslashes($evento->title) }}`,
                                                         `{{ addslashes($evento->inicio) }}`,
+                                                        `{{ addslashes($evento->fin) }}`,
                                                         `{{ addslashes($horario->start_hour) }}`,
                                                         `{{ addslashes($horario->end_hour) }}`,
                                                         
