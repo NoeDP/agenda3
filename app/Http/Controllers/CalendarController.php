@@ -166,9 +166,9 @@ class CalendarController extends Controller
         'foros_id' => 'required|exists:foros,id',
         'organizadors_id' => 'required|exists:organizadors,id',
         'start_date' => 'required|date',
-        'start_hour' => 'required|date_format:H:i',
+        'start_hour' => 'required',
         'end_date' => 'required|date|after_or_equal:start_date',
-        'end_hour' => 'required|date_format:H:i|after:start_hour',
+        'end_hour' => 'required|after:start_hour',
     ]);
 
     if ($validator->fails()) {
