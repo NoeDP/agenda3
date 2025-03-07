@@ -18,7 +18,8 @@ class RoleMiddleware
     {
         // Verifica si el usuario está autenticado y si tiene el rol correspondiente
         if (!Auth::check() || !Auth::user()->hasRole($role)) {
-            throw new AuthorizationException('Acceso denegado.');
+            //throw new AuthorizationException('Acceso denegado.');
+             abort(403);
         }
 
         return $next($request);
